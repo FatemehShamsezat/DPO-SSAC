@@ -161,45 +161,15 @@ class MultiDiscretePolicy(nn.Module):
         a_probs = a_probs.unsqueeze(1)
         a_probs = torch.cat([1-a_probs, a_probs], 1)
         a_probs = torch.clamp(a_probs, 1e-10, 1 - 1e-10)
-        #print("a_probs!!!!!!!!!!!!!!!!!!!!!!",a_probs)
         # [a_dim, 2] => [a_dim]
         rand_state = torch.random.get_rng_state()
-        # print("rand state")
-        # print(rand_state)
         torch.manual_seed(self.seed)
-        #the multinalmial() changes the random state, in order to ensure the 
-        #reproducibility, we have to reset the state after sampling
-
-        #scores[scores == float("-inf")] = torch.finfo(scores.dtype).min
 
         a = a_probs.multinomial(1).squeeze(1) if sample else a_probs.argmax(1)
         torch.random.set_rng_state(rand_state)
         
         return a
-    '''
-    def batch_select_action(self, s, sample=False, action_mask=0):
-        """
-        :param s: [b, s_dim]
-        :return: [b, a_dim]
-        """
-        # forward to get action probs
-        # [b, s_dim] => [b, a_dim]
-        a_weights = self.forward(s)
-        a_probs = torch.sigmoid(a_weights + action_mask)
-        
-        # [b, a_dim] => [b, a_dim, 2]
-        a_probs = a_probs.unsqueeze(-1)
-        a_probs = torch.cat([1-a_probs, a_probs], -1)
-        a_probs = torch.clamp(a_probs, 1e-10, 1 - 1e-10)
 
-        # [b, a_dim, 2] => [b*a_dim, 2] => [b*a_dim, 1] => [b*a_dim] => [b, a_dim]
-        rand_state = torch.random.get_rng_state()
-        torch.manual_seed(self.seed)
-        a = a_probs.reshape(-1, 2).multinomial(1).squeeze(1).reshape(a_weights.shape) if sample else a_probs.argmax(-1)
-        torch.random.set_rng_state(rand_state)
-
-        return a
-    '''
     def get_log_prob(self, s, a, action_mask=0):
         """
         :param s: [b, s_dim]
