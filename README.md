@@ -26,5 +26,6 @@ particularly in the context of dialogue systems.
 DPO-SSAC model.
 
 ## Citation
-If you find this work useful in your research, please consider citing the corresponding paper: [Insert 
-citation details here]
+If you find this work useful in your research, please consider citing the corresponding paper: 
+
+Shamsezat, F., Mohades, A., & Shiry Ghidary, S. (2025). Optimizing Multi-Domain Task-Oriented Dialogue Policy through Sigmoidal Discrete-SAC. Computer Speech & Language.
