@@ -1,6 +1,4 @@
-# Multi-Domain Task-Oriented Dialogue 
-Policy Optimization through Sigmoidal 
-Discrete-SAC (DPO-SSAC)
+# Multi-Domain Task-Oriented Dialogue Policy Optimization through Sigmoidal Discrete-SAC (DPO-SSAC)
 
 This repository contains an implementation of DPO-SSAC, as described in the corresponding paper, 
 integrated with Convlab-3.
