@@ -63,8 +63,7 @@ class DPO_SSAC(Policy):
                       
         self.automatic_entropy_tuning=cfg["automatic_entropy_tuning"]
         if self.automatic_entropy_tuning:
-            #self.target_entropy = .98*-np.log((1.0/self.vector.da_dim))
-            self.target_entropy = 1
+            self.target_entropy = .98*-np.log((1.0/self.vector.da_dim))
             self.log_alpha = torch.zeros(1, requires_grad=True, device = DEVICE)
             self.alpha = self.log_alpha.exp().detach()
             self.alpha_optim = optim.Adam([self.log_alpha], lr=cfg['policy_lr'])
