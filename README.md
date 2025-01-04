@@ -4,7 +4,7 @@ This repository contains an implementation of DPO-SSAC, as described in the corr
 integrated with Convlab-3.
 
 DPO-SSAC is an off-policy deep reinforcement learning method designed for task-oriented dialogue 
-policy learning. It aims to enhance the stability, exploration, robustness, and learning speed of dialogue 
+policy learning. It aims to enhance the stability, exploration, and robustness of dialogue 
 policies in discrete task-oriented dialogue environments.
 
 One of the key features of DPO-SSAC is the introduction of the sigmoidal discrete-SAC (SSAC) approach, 
